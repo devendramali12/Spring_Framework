@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Student</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#dbeafe,#bfdbfe);
+}
+
+.form-container{
+background:white;
+padding:40px;
+width:450px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h2{
+text-align:center;
+margin-bottom:25px;
+color:#1e293b;
+}
+
+.error-box{
+background:#fee2e2;
+color:#b91c1c;
+padding:12px;
+border-radius:10px;
+margin-bottom:20px;
+text-align:center;
+font-weight:bold;
+}
+
+.input-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+color:#334155;
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid #cbd5e1;
+border-radius:10px;
+font-size:15px;
+}
+
+input:focus{
+outline:none;
+border-color:#2563eb;
+box-shadow:0 0 8px rgba(37,99,235,0.2);
+}
+
+.btn-group{
+display:flex;
+gap:15px;
+margin-top:25px;
+}
+
+.save-btn{
+flex:1;
+background:#2563eb;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.save-btn:hover{
+background:#1d4ed8;
+}
+
+.back-btn{
+flex:1;
+text-align:center;
+text-decoration:none;
+background:#64748b;
+color:white;
+padding:12px;
+border-radius:10px;
+}
+
+.back-btn:hover{
+background:#475569;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="form-container">
+
+<h2>➕ Add Student</h2>
+
+<div th:if="${error}" class="error-box">
+<span th:text="${error}"></span>
+</div>
+
+<form action="/save" method="post">
+
+<div class="input-group">
+<label>Student ID</label>
+<input type="number"
+name="id"
+required>
+</div>
+
+<div class="input-group">
+<label>Name</label>
+<input type="text"
+name="name"
+required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email"
+name="email"
+required>
+</div>
+
+<div class="input-group">
+<label>Course</label>
+<input type="text"
+name="course"
+required>
+</div>
+
+<div class="btn-group">
+
+<button type="submit"
+class="save-btn">
+Save
+</button>
+
+<a href="/"
+class="back-btn">
+Back
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</body>
+</html>

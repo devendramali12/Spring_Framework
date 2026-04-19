@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#dbeafe,#f0f9ff);
+padding:40px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 8px 30px rgba(0,0,0,0.1);
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+h1{
+color:#1e293b;
+}
+
+.add-btn{
+background:#2563eb;
+color:white;
+text-decoration:none;
+padding:12px 20px;
+border-radius:10px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.add-btn:hover{
+background:#1d4ed8;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+overflow:hidden;
+border-radius:15px;
+}
+
+thead{
+background:#2563eb;
+color:white;
+}
+
+th,td{
+padding:18px;
+text-align:center;
+}
+
+tbody tr{
+border-bottom:1px solid #ddd;
+transition:0.3s;
+}
+
+tbody tr:hover{
+background:#f8fafc;
+transform:scale(1.01);
+}
+
+.edit-btn{
+background:#22c55e;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+text-decoration:none;
+margin-right:8px;
+}
+
+.delete-btn{
+background:#ef4444;
+color:white;
+padding:8px 14px;
+border-radius:8px;
+text-decoration:none;
+}
+
+.edit-btn:hover{
+background:#16a34a;
+}
+
+.delete-btn:hover{
+background:#dc2626;
+}
+
+.empty{
+text-align:center;
+padding:30px;
+color:gray;
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>🎓 Student Management System</h1>
+
+<a href="/add" class="add-btn">
++ Add Student
+</a>
+</div>
+
+<table>
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Course</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr th:each="s:${students}">
+<td th:text="${s.id}"></td>
+<td th:text="${s.name}"></td>
+<td th:text="${s.email}"></td>
+<td th:text="${s.course}"></td>
+
+<td>
+
+<a th:href="@{/edit/{id}(id=${s.id})}"
+class="edit-btn">
+Edit
+</a>
+
+<a th:href="@{/delete/{id}(id=${s.id})}"
+class="delete-btn"
+onclick="return confirm('Delete this student?')">
+Delete
+</a>
+
+</td>
+
+</tr>
+
+<tr th:if="${#lists.isEmpty(students)}">
+<td colspan="5" class="empty">
+No Students Found
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
