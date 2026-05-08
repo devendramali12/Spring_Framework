@@ -21,7 +21,7 @@ public class Laptop {
 	}
 
 	public void info() {
-		System.out.println("------------laptop-------------");
+		System.out.println("------------laptop------------");
 		System.out.println("Brand :-" + brand);
 		System.out.println("Price :- " + price);
 	}
