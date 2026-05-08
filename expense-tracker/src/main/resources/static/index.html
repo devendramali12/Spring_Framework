@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>💰 Expense Tracker</title>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <header>
+        <h1>💰 Expense Tracker</h1>
+        <div class="total-card">
+            Total Spent: <span id="grandTotal">₹0.00</span>
+        </div>
+    </header>
+
+    <!-- Add / Edit Form -->
+    <section class="form-section">
+        <h2 id="formTitle">➕ Add Expense</h2>
+        <div class="form-grid">
+            <input type="hidden" id="expenseId"/>
+            <input type="text"   id="title"       placeholder="Title *" required/>
+            <input type="number" id="amount"      placeholder="Amount (₹) *" required min="1"/>
+            <select id="category">
+                <option value="">Select Category *</option>
+                <option>Food</option>
+                <option>Transport</option>
+                <option>Bills</option>
+                <option>Shopping</option>
+                <option>Health</option>
+                <option>Entertainment</option>
+                <option>Other</option>
+            </select>
+            <input type="date"   id="date" required/>
+            <input type="text"   id="description" placeholder="Description (optional)" class="full-width"/>
+        </div>
+        <div class="form-actions">
+            <button onclick="saveExpense()" class="btn-primary">💾 Save Expense</button>
+            <button onclick="resetForm()"   class="btn-secondary">✖ Cancel</button>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filter-section">
+        <h2>🔍 Filter Expenses</h2>
+        <div class="filter-grid">
+            <select id="filterCategory">
+                <option value="">All Categories</option>
+                <option>Food</option>
+                <option>Transport</option>
+                <option>Bills</option>
+                <option>Shopping</option>
+                <option>Health</option>
+                <option>Entertainment</option>
+                <option>Other</option>
+            </select>
+            <input type="date" id="filterStart" placeholder="Start Date"/>
+            <input type="date" id="filterEnd"   placeholder="End Date"/>
+            <button onclick="applyFilter()" class="btn-primary">Apply</button>
+            <button onclick="clearFilter()"  class="btn-secondary">Clear</button>
+        </div>
+    </section>
+
+    <!-- Expense Table -->
+    <section class="table-section">
+        <h2>📋 Expense List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTableBody">
+                <!-- filled by JS -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-section">
+        <h2>📊 Analytics</h2>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Spending by Category</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Monthly Spending (2024)</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
