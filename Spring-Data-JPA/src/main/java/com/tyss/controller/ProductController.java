@@ -163,7 +163,7 @@ public class ProductController {
 		int a = 10 / 0;// ArithmeticException
 
 		System.out.println("Hiii");
-
+		System.out.println("Hello");
 		return "Welcome to API";
 	}
 
